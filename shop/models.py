@@ -27,7 +27,7 @@ class Product(models.Model):
         Category, related_name='products', on_delete=models.CASCADE
     )
     name = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -48,3 +48,7 @@ class Product(models.Model):
         # http://test/object111/
         return reverse('shop:product_details',
                        args=[self.slug, ])
+
+    def save(self):
+        self.slug = self.name.lower().replace(" ", '-')
+        return super().save()

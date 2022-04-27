@@ -179,9 +179,14 @@ ul.errorlist {
 
 #main {
     float:left;
-    width: 96%;
+    width: 90%;
     margin-right:-220px;
     overflow:hidden;
+}
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
 }
 
 .product-list .item {
