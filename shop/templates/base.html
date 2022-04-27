@@ -15,8 +15,8 @@
     <div class="container-fluid">
         <a href="/" class="navbar-brand">My shop</a>
         <a href="/add-product"><i class="fa-duotone fa-plus"></i></a>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" action="{% url 'shop:search' %}">
+            <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
@@ -26,5 +26,23 @@
         Empty Content
     {% endblock content %}
 </div>
+<div class="pagination">
+    <span class="step-links">
+        {% if products.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ products.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+        </span>
+
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">next</a>
+            <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 </body>
 </html>
