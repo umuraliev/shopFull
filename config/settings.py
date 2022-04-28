@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # custom application
     'shop',
+    'cart',
+    'order',
 
 ]
 
@@ -133,3 +135,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # custom settings
 PAGINATOR_NUM = 4
+CART_SESSION_ID = 'cart'
