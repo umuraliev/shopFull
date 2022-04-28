@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.conf import settings
 
+from cart.forms import CartAddProductForm
 from .forms import ProductForm
 from .helpers import product_list_filter_sort
 from .models import Category, Product
@@ -65,10 +66,13 @@ def get_product_list(request, category_slug=None):
 
 
 def get_product_detail(request, product_slug):
-    """Детализация продукта"""
+    """Детализация продукта
+    """
     product = get_object_or_404(Product, slug=product_slug)
+    cart_product_form = CartAddProductForm()
     context = {
-        'product': product
+        'product': product,
+        'cart_product_form': cart_product_form
     }
     return render(
         request, 'product/product_detail.html', context
