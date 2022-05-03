@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.crypto import get_random_string
 
+
 class MyUserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -25,6 +26,7 @@ class MyUserManager(BaseUserManager):
         user.is_active = True
         user.save(using=self._db)
         return user
+
 
 class MyUser(AbstractUser):
     username = None
