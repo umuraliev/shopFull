@@ -1,7 +1,6 @@
 from django.core.mail import send_mail
 
 def send_activation_mail(user):
-    user.create_activation_code()
     message = f"""
 Спасибо за регистрацию. 
 Активируйте ваш аккаунт по этой ссылке:
